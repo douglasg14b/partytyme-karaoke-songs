@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.1aa15a92.css",
-    "main.js": "/static/js/main.9838498f.js",
-    "static/js/787.a8b3d52c.chunk.js": "/static/js/787.a8b3d52c.chunk.js",
-    "index.html": "/index.html",
-    "main.1aa15a92.css.map": "/static/css/main.1aa15a92.css.map",
-    "main.9838498f.js.map": "/static/js/main.9838498f.js.map",
-    "787.a8b3d52c.chunk.js.map": "/static/js/787.a8b3d52c.chunk.js.map"
+    "main.css": "/partytyme-karaoke-songs/static/css/main.1aa15a92.css",
+    "main.js": "/partytyme-karaoke-songs/static/js/main.85de4d64.js",
+    "static/js/787.a8b3d52c.chunk.js": "/partytyme-karaoke-songs/static/js/787.a8b3d52c.chunk.js",
+    "index.html": "/partytyme-karaoke-songs/index.html",
+    "main.1aa15a92.css.map": "/partytyme-karaoke-songs/static/css/main.1aa15a92.css.map",
+    "main.85de4d64.js.map": "/partytyme-karaoke-songs/static/js/main.85de4d64.js.map",
+    "787.a8b3d52c.chunk.js.map": "/partytyme-karaoke-songs/static/js/787.a8b3d52c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1aa15a92.css",
-    "static/js/main.9838498f.js"
+    "static/js/main.85de4d64.js"
   ]
 }
