@@ -16,26 +16,6 @@ import { styled } from '@mui/material/styles';
 import { useRecoilState } from 'recoil';
 import { songSearchState } from '../features/songs/songState';
 
-
-const SearchField = styled(OutlinedInput)({
-	'& label.Mui-focused': {
-	  color: 'green',
-	},
-	'& .MuiInput-underline:after': {
-	  borderBottomColor: 'green',
-	},
-	'& .MuiOutlinedInput-root': {
-	  '& fieldset': {
-		borderColor: 'red',
-	  },
-	  '&:hover fieldset': {
-		borderColor: 'yellow',
-	  },
-	  '&.Mui-focused fieldset': {
-		borderColor: 'green',
-	  },
-	},
-  });
 export default function AppTopBar() {
 	const location = useLocation();
 
@@ -44,6 +24,8 @@ export default function AppTopBar() {
 	const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setSearch(event.target.value);
 	};
+
+	const locationIsSongs = location.pathname === '/songs';
 
 	return (
 		<AppBar position="static">
@@ -54,7 +36,8 @@ export default function AppTopBar() {
 					</Typography>
 				</Box>
 				<Box sx={{ flexGrow: 1, display: 'flex', justifyContent:' end' }}>
-					<OutlinedInput
+					{locationIsSongs && 
+						<OutlinedInput
 						id="outlined-basic"
 						size="small"
 						margin="dense"
@@ -66,6 +49,8 @@ export default function AppTopBar() {
 								<SearchIcon />
 							</InputAdornment>
 						} />
+					}
+
 				</Box>
 			</Toolbar>
 		</AppBar>
