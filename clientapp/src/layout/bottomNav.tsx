@@ -25,7 +25,7 @@ export default function BottomNav() {
             showLabels
             value={value}
           >
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} value="/" component={NavLink} to="/" />
+            <BottomNavigationAction label="Home" icon={<HomeIcon />} value="/home" component={NavLink} to="/home" />
             <BottomNavigationAction label="Songs" icon={<MusicNoteIcon />} value="/songs" component={NavLink} to="/songs" />
             <BottomNavigationAction label="Lists" icon={<QueueMusicIcon />} value="/playlists" component={NavLink} to="/playlists" />
           </BottomNavigation>
