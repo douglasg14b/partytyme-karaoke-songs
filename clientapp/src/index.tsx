@@ -7,6 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import Songs from './routes/Songs';
+import Playlists from './routes/Playlists';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import { theme } from './theme';
@@ -23,7 +24,8 @@ root.render(
         <HashRouter>
           <Routes>
             <Route path='/' element={<App/>}>
-              <Route path='songs' element={<Songs/>}/>  
+              <Route path='songs' element={<Songs/>}/>
+              <Route path='playlists' element={<Playlists/>}/>
             </Route>
           </Routes>
         </HashRouter>

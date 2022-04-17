@@ -2,8 +2,15 @@ import { Song } from './song';
 import dataJson from './songs.json';
 
 const songsArray: Song[] = dataJson as unknown as Song[]
+const songsHash = new Map(songsArray.map((song) => [song.trackId, song]))
+
 export class SongsService {
 	private searchResults: Song[] = [];
+
+	public getSong(trackId: string) {
+		return songsHash.get(trackId);
+	}
+
 	public search(term: string) {
 		term = term?.toLowerCase() || '';
 		const matches = [];
@@ -36,5 +43,6 @@ const songsService = new SongsService();
 
 export {
 	songsService,
-	songsArray
+	songsArray,
+	songsHash
 }
