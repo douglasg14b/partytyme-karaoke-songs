@@ -12,6 +12,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import { theme } from './theme';
 import { ThemeProvider } from '@mui/material';
+import Home from './routes/Home';
 
 const container = document.getElementById('root')!;
 
@@ -24,6 +25,7 @@ root.render(
         <HashRouter>
           <Routes>
             <Route path='/' element={<App/>}>
+              <Route path='home' element={<Home/>}/>
               <Route path='songs' element={<Songs/>}/>
               <Route path='playlists' element={<Playlists/>}/>
             </Route>
