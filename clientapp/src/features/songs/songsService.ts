@@ -29,9 +29,24 @@ export class SongsService {
 	}
 
 	private isMatch(term: string, song: Song) {
+		
+
 		try {
-			return song.artist.toString().toLowerCase().includes(term) ||
-				song.title.toString().toLowerCase().includes(term);
+			// const parts = term.trim().split(' ');
+
+			// const artist = song.artist.toString().toLowerCase();
+			// const title = song.title.toString().toLowerCase();
+
+
+			// for(let i = 0; i < parts.length; i++){
+			// 	if(artist.includes(parts[i]) || title.includes(parts[i])) {
+			// 		return true;
+			// 	}
+			// }
+
+			// return false;
+			 return song.artist.toString().toLowerCase().includes(term) ||
+			 	song.title.toString().toLowerCase().includes(term);
 		} catch(e){
 			console.error(e, song)
 			return false
