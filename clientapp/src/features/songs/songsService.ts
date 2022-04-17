@@ -1,7 +1,10 @@
 import { Song } from './song';
 import dataJson from './songs.json';
 
-const songsArray: Song[] = dataJson as unknown as Song[]
+const collator = new Intl.Collator();
+const songsArray: Song[] = (dataJson as unknown as Song[]).sort((a, b) => {
+	return collator.compare(a.artist, b.artist)
+})
 const songsHash = new Map(songsArray.map((song) => [song.trackId, song]))
 
 export class SongsService {
