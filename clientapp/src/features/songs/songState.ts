@@ -12,7 +12,7 @@ const songSearchResults = selector({
 		const search = get(songSearchState);
 
 		if(!search) {
-			return songsArray.slice(0, 25);
+			return songsArray.slice(0, 50);
 		}
 		
 		return songsService.search(search)

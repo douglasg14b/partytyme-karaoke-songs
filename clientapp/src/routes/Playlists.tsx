@@ -40,7 +40,7 @@ export default function Playlists() {
 					))}
 				</Stack>
 			</Grid>
-			<Fab color="green400" disabled sx={fabStyle as SxProps} aria-label="add" onClick={handleDialogOpen}>
+			<Fab color="green400" sx={fabStyle as SxProps} aria-label="add" onClick={handleDialogOpen}>
 				<AddIcon htmlColor="white" />
 			</Fab>
 			<CreatePlaylistDialog isOpen={dialogOpen} onClose={handleDialogClose}></CreatePlaylistDialog>

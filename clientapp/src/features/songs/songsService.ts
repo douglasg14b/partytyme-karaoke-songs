@@ -8,7 +8,12 @@ const songsArray: Song[] = (dataJson as unknown as Song[]).sort((a, b) => {
 const songsHash = new Map(songsArray.map((song) => [song.trackId, song]))
 
 export class SongsService {
+	private resultSetSize = 25;
 	private searchResults: Song[] = [];
+
+	get totalSongCount() {
+		return songsArray.length;
+	}
 
 	public getSong(trackId: string) {
 		return songsHash.get(trackId);
@@ -19,7 +24,7 @@ export class SongsService {
 		const matches = [];
 
 		for(let i = 0; i < songsArray.length; i++) {
-			if(matches.length >= 25) break;
+			if(matches.length >= this.resultSetSize) break;
 
 			if(this.isMatch(term, songsArray[i])) {
 				matches.push(songsArray[i]);

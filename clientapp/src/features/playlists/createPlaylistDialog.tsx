@@ -20,6 +20,8 @@ interface Props {
 export default function CreatePlaylistDialog({ isOpen, onClose }: Props) {
 	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(playlistsState);
 	const [name, setName] = useState('')
+	const [errorMessage, setErrorMessage] = useState('')
+
 	const [isDefault, setIsDefault] = useState(true)
 	const [defaultSwitchDisabled, setDefaultSwitchDisabled] = useState(false)
 
@@ -29,14 +31,25 @@ export default function CreatePlaylistDialog({ isOpen, onClose }: Props) {
 
 	const onDefaultChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setIsDefault(event.target.checked);
-	  };
+	};
 
 	const handleClose = () => {
 		onClose();
 	};
 
 	useEffect(() => {
-		if(playlists.some((x) => x.default)) {
+
+		// This is quite an annoying way to do form validation
+		// There has  got to be a better way, that more engrained and declarative?
+		if (playlists.some((x) => x.name === name)) {
+			setErrorMessage("Playlist name already exists");
+		} else {
+			setErrorMessage("");
+		}
+	}, [name]);
+
+	useEffect(() => {
+		if (playlists.some((x) => x.default)) {
 			setIsDefault(false);
 			setDefaultSwitchDisabled(true);
 		}
@@ -56,9 +69,11 @@ export default function CreatePlaylistDialog({ isOpen, onClose }: Props) {
 
 	return (
 		<Dialog open={isOpen} onClose={handleClose} maxWidth='md' fullWidth>
-			<DialogTitle sx={{textAlign: 'center', pb: 1}}>Create Playlist</DialogTitle>
-			<DialogContent sx={{pt: 0, pb: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+			<DialogTitle sx={{ textAlign: 'center', pb: 1 }}>Create Playlist</DialogTitle>
+			<DialogContent sx={{ pt: 0, pb: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 				<TextField
+					error={!!errorMessage}
+					helperText={errorMessage}
 					size='small'
 					autoFocus
 					margin="dense"
@@ -71,9 +86,9 @@ export default function CreatePlaylistDialog({ isOpen, onClose }: Props) {
 					<Switch checked={isDefault} onChange={onDefaultChange} color="warning" disabled={defaultSwitchDisabled} />
 				} label="Default" />
 			</DialogContent>
-			<DialogActions sx={{py: 1}}>
+			<DialogActions sx={{ py: 1 }}>
 				<Button onClick={handleClose}>Cancel</Button>
-				<Button onClick={handleSave}>Create</Button>
+				<Button onClick={handleSave} disabled={!!errorMessage && name.length > 1}>Create</Button>
 			</DialogActions>
 		</Dialog>
 	);

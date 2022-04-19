@@ -37,6 +37,7 @@ const playlistCountState = selector({
 const playlistSongsState = selector({
 	key: 'playlistSongsState', // unique ID (with respect to other atoms/selectors)
 	get: ({ get }) => {
+		console.log('playlistSongsState run')
 		const playlists = get(playlistsState);
 
 		// Key: song, value: playlist name
@@ -61,6 +62,13 @@ const usePlaylistSongs = (name: string) => {
 	const songs = playlist.songs.map(x => songsService.getSong(x)).filter((value) => !!value) as Song[];
 
 	return songs;
+}
+
+const usePlaylistArtists = (name: string) => {
+	const songs = usePlaylistSongs(name);
+	const artists = Array.from((new Set<string>(songs.map((x) => x.artist))).keys())
+
+	return artists;
 }
 
 const useIsSongInPlaylist = (trackId: string) => {
@@ -112,6 +120,7 @@ const useAddSongToDefaultPlaylist = () => {
 
 export {
 	usePlaylistSongs,
+	usePlaylistArtists,
 	playlistSongsState,
 	playlistsState,
 	playlistCountState,
