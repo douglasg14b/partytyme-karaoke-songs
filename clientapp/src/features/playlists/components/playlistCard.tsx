@@ -8,11 +8,11 @@ import Typography from '@mui/material/Typography';
 
 import EditIcon from '@mui/icons-material/Edit';
 
-import { Playlist } from './playlist';
+import { Playlist } from '@/features/playlists/models';
 
 
 import SongCard from '@/features/songs/components/songCard';
-import { usePlaylistArtists, usePlaylistSongs } from './playlistsState';
+import { usePlaylistArtists, usePlaylistSongs } from '@/features/playlists/hooks';
 import { useEffect, useState } from 'react';
 
 type Props = {

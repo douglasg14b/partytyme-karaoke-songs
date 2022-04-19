@@ -1,22 +1,13 @@
-import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import Popover from '@mui/material/Popover';
 import IconButton from '@mui/material/IconButton';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
 
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 import { Song } from '../song';
 
-import { green, red } from '@mui/material/colors';
 
-import styles from './songCard.module.css'
-import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import { playlistCountState, useAddSongToDefaultPlaylist } from '@/features/playlists';
-import SongCardId from './songCardId';
+import { useAddSongToDefaultPlaylist } from '@/features/playlists/hooks';
+import { withPlaylistCount } from '@/features/playlists/recoil';
 
 type Props = {
 	song: Song
@@ -25,7 +16,7 @@ type Props = {
 
 export default function SongCardAddToPlaylistButton({ song, disabled }: Props) {
 	const addSong = useAddSongToDefaultPlaylist();
-	const playlistCount = useRecoilValue(playlistCountState);
+	const playlistCount = useRecoilValue(withPlaylistCount);
 
 	const handleAddToPlaylist = () => {
 		addSong(song);

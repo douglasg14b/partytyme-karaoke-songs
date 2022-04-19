@@ -1,21 +1,14 @@
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import Popover from '@mui/material/Popover';
-import IconButton from '@mui/material/IconButton';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
-import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
 import { Song } from '../song';
 
-import { green, red } from '@mui/material/colors';
 
 import styles from './songCard.module.css'
-import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { playlistCountState, useAddSongToDefaultPlaylist, useIsSongInPlaylist } from '@/features/playlists';
+import { useIsSongInPlaylist } from '@/features/playlists/hooks';
 import SongCardId from './songCardId';
 import SongCardAddToPlaylistButton from './songCardAddToPlaylistButton';
 import SongCardRemoveFromPlaylistButton from './songCardRemoveFromPlaylistButton';

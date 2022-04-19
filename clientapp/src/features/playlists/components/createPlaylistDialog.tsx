@@ -8,17 +8,18 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { playlistsState } from './playlistsState';
+
 import { useRecoilState } from 'recoil';
-import { Playlist } from './playlist';
+import { Playlist } from '../models/playlist';
 import { useEffect, useState } from 'react';
+import { atomPlaylists } from '../recoil';
 
 interface Props {
 	isOpen: boolean,
 	onClose: () => void
 }
 export default function CreatePlaylistDialog({ isOpen, onClose }: Props) {
-	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(playlistsState);
+	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(atomPlaylists);
 	const [name, setName] = useState('')
 	const [errorMessage, setErrorMessage] = useState('')
 

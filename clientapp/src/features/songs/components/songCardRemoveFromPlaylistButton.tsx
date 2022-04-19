@@ -6,7 +6,8 @@ import { Song } from '../song';
 
 
 import { useRecoilValue } from 'recoil';
-import { playlistCountState, useRemoveSongFromDefaultPlaylist } from '@/features/playlists';
+import { useRemoveSongFromDefaultPlaylist } from '@/features/playlists/hooks';
+import { withPlaylistCount } from '@/features/playlists/recoil';
 
 type Props = {
 	song: Song
@@ -14,7 +15,7 @@ type Props = {
 
 export default function SongCardRemoveFromPlaylistButton({ song }: Props) {
 	const removeSong = useRemoveSongFromDefaultPlaylist();
-	const playlistCount = useRecoilValue(playlistCountState);
+	const playlistCount = useRecoilValue(withPlaylistCount);
 
 	const handleRemove = () => {
 		removeSong(song.trackId);
