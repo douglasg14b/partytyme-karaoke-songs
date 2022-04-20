@@ -45,7 +45,7 @@ export default function Playlists() {
 			<Fab color="green400" sx={fabStyle as SxProps} aria-label="add" onClick={handleDialogOpen}>
 				<AddIcon htmlColor="white" />
 			</Fab>
-			<CreatePlaylistDialog isOpen={dialogOpen} onClose={handleDialogClose}></CreatePlaylistDialog>
+			<CreatePlaylistDialog isOpen={dialogOpen} onClose={handleDialogClose} key={`${dialogOpen}`}></CreatePlaylistDialog>
 		</React.Fragment>
 
     );
