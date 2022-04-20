@@ -19,7 +19,7 @@ type Props = {
 	playlist: Playlist
 }
 
-export default function PlaylistCard({ playlist }: Props) {
+export function PlaylistCard({ playlist }: Props) {
 	const [titleDetails, setTitleDetails] = useState('')
 
 	const songs = usePlaylistSongs(playlist.name);

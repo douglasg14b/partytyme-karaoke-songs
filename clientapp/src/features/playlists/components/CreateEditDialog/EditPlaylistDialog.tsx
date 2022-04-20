@@ -12,6 +12,7 @@ import { useRecoilState } from 'recoil';
 import { Playlist } from '@/features/playlists/models';
 import { atomPlaylists } from '@/features/playlists/recoil';
 import { useEffect, useState } from 'react';
+import { uuidv4 } from '@/_utility';
 
 interface Props {
 	playlistName: string
@@ -39,7 +40,11 @@ const usePlaylistForm = (playlistName: string) => {
 	}, [name]);
 
 	return {
-
+		playlists,
+		setPlaylists,
+		name,
+		setName,
+		errorMessage
 	}
 }
 
@@ -79,10 +84,11 @@ export default function EditPlaylistDialog({ playlistName, isOpen, onClose }: Pr
 			setIsDefault(false);
 			setDefaultSwitchDisabled(true);
 		}
-	}, [isOpen])
+	}, [isOpen, playlists])
 
 	const handleSave = () => {
 		const newPlaylist: Playlist = {
+			id: uuidv4(),
 			name: name,
 			default: isDefault,
 			deleted: false,

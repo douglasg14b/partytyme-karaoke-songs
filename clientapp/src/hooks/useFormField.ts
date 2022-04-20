@@ -18,6 +18,7 @@ export function useFormField(initialValue: string, rules: FieldRuleCallback[]): 
 		if(!didMount) {
 			return
 		}
+		
 		let effectError: string | boolean = false;
 		for (let i = 0; i < rules.length; i++) {
 			const ruleResult = rules[i](value)
@@ -29,7 +30,7 @@ export function useFormField(initialValue: string, rules: FieldRuleCallback[]): 
 
 		// true means no error, so set to blank
 		setError(effectError === true ? '' : effectError);
-	}, [value])
+	}, [value, didMount, rules])
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(event.target.value);
