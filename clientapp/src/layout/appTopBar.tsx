@@ -35,20 +35,22 @@ export default function AppTopBar() {
 						{location.pathname}
 					</Typography>
 				</Box>
-				<Box sx={{ flexGrow: 1, display: 'flex', justifyContent:' end' }}>
-					{locationIsSongs && 
+				<Box sx={{ flexGrow: 1, display: 'flex', justifyContent: ' end' }}>
+					{locationIsSongs &&
 						<OutlinedInput
-						id="outlined-basic"
-						size="small"
-						margin="dense"
-						color="info"
-						sx={{background: 'aliceblue', color: 'black'}}
-						onChange={onChange}
-						endAdornment={
-							<InputAdornment position="end">
-								<SearchIcon />
-							</InputAdornment>
-						} />
+							size="small"
+							margin="dense"
+							color="info"
+							sx={{ background: 'aliceblue', color: 'black' }}
+							onChange={onChange}
+							inputProps={{
+								autoComplete: "none",
+							}}
+							endAdornment={
+								<InputAdornment position="end">
+									<SearchIcon />
+								</InputAdornment>
+							} />
 					}
 
 				</Box>

@@ -45,7 +45,7 @@ export default React.memo(function SongCardCheap({ song, style }: Props) {
 									</Typography>
 								</Grid>
 								<Grid item flexGrow={1}></Grid>
-								<Grid item sx={{mb: 0.8, mr: -0.7}}>
+								<Grid item sx={{mb: 1, mr: 0}}>
 									<Typography variant="caption" color={red[700]}>
 										<code>{song.trackId}</code>
 									</Typography>
@@ -57,4 +57,4 @@ export default React.memo(function SongCardCheap({ song, style }: Props) {
 			</CardContent>
 		</Card>
 	)
-}, (prevProps, nextProps) => false)
+}, (prevProps, nextProps) => true)
