@@ -20,34 +20,6 @@ interface Props {
 	onClose: () => void
 }
 
-const usePlaylistForm = (playlistName: string) => {
-	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(atomPlaylists);
-	const [name, setName] = useState(playlistName)
-	const [errorMessage, setErrorMessage] = useState('')
-
-	const [isDefault, setIsDefault] = useState(true)
-	const [defaultSwitchDisabled, setDefaultSwitchDisabled] = useState(false)
-
-	useEffect(() => {
-
-		// This is quite an annoying way to do form validation
-		// There has  got to be a better way, that more engrained and declarative?
-		if (playlists.some((x) => x.name === name)) {
-			setErrorMessage("Playlist name already exists");
-		} else {
-			setErrorMessage("");
-		}
-	}, [name]);
-
-	return {
-		playlists,
-		setPlaylists,
-		name,
-		setName,
-		errorMessage
-	}
-}
-
 export default function EditPlaylistDialog({ playlistName, isOpen, onClose }: Props) {
 	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(atomPlaylists);
 	const [name, setName] = useState(playlistName)
