@@ -54,6 +54,13 @@ declare module '@mui/material/Fab' {
     }
 }
 
+
+declare module '@mui/material/SvgIcon' {
+    interface SvgIconPropsColorOverrides {
+        green400: true;
+    }
+}
+
 export {
     theme
 }
