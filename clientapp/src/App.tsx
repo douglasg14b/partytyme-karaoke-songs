@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import AppTopBar from './layout/appTopBar';
 import { RecoilRoot } from 'recoil';
+import { Dialogs } from './components';
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 					</Grid>
 				</Grid>
 			</Container>
+			<Dialogs/>
 		</RecoilRoot>
 	);
 }

@@ -66,7 +66,7 @@ export function EditPlaylistDialog({ playlistId, isOpen, onClose }: Props) {
 
 	return (
 		<Dialog open={isOpen} onClose={handleClose} maxWidth='md' fullWidth>
-			<DialogTitle sx={{ textAlign: 'center', pb: 1 }}>Create Playlist</DialogTitle>
+			<DialogTitle sx={{ textAlign: 'center', pb: 1 }}>Edit Playlist</DialogTitle>
 			<DialogContent sx={{ pt: 0, pb: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 				<PlaylistNameField playlist={existingPlaylist} value={name} onError={setError} onChange={setName}/>
 				<FormControlLabel control={

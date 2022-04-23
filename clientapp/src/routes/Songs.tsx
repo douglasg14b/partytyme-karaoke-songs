@@ -12,12 +12,12 @@ import TextField from '@mui/material/TextField';
 import Divider from '@mui/material/Divider';
 
 import { Song, songsService, songsArray, artists } from "../features/songs";
-import SongCard from "../features/songs/components/songCard";
+import { SongCard, SongCardCheap } from "@/features/songs/components/SongCard";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { selectedArtistState, songSearchResults } from "../features/songs/songState";
-import SongCardCheap from "@/features/songs/components/songCardCheap";
 
 interface ArtistsSearchProps {
+	value: string,
 	onChange: (value: string) => void
 }
 

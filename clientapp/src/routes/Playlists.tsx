@@ -36,7 +36,7 @@ export default function Playlists() {
     return (
 		<React.Fragment>
 			<Grid container flexGrow="1" sx={{ m: 4, pb: 4, width: 'auto', justifyContent: 'center', position: 'relative'}}>
-				<Stack spacing={2} sx={{ width: '100%', flexWrap: 'nowrap' }}>
+				<Stack spacing={4} sx={{ width: '100%', flexWrap: 'nowrap' }}>
 					{playlists.map((playlist) => (
 						<PlaylistCard playlist={playlist} key={playlist.name} />
 					))}

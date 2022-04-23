@@ -1,13 +1,15 @@
+import useEventBus from '@jeyz/event-bus'
 import IconButton from '@mui/material/IconButton';
 
 import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 
-import { Song } from '../song';
+import { Song } from '@/features/songs';
 
 
 import { useRecoilValue } from 'recoil';
 import { useAddSongToDefaultPlaylist } from '@/features/playlists/hooks';
 import { withPlaylistCount } from '@/features/playlists/recoil';
+import { DialogEventBusMessages } from '@/_utility';
 
 type Props = {
 	song: Song
@@ -15,11 +17,16 @@ type Props = {
 }
 
 export default function SongCardAddToPlaylistButton({ song, disabled }: Props) {
+	const eventBus = useEventBus<DialogEventBusMessages>();
 	const addSong = useAddSongToDefaultPlaylist();
 	const playlistCount = useRecoilValue(withPlaylistCount);
 
 	const handleAddToPlaylist = () => {
-		addSong(song);
+        eventBus.publish({
+            topic: 'AddSongToPlaylist',
+            payload: { songTrackId: song.trackId }
+        });
+		// addSong(song);
 	}
 
 	return (

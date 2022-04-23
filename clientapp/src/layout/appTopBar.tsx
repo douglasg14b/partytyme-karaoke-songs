@@ -38,6 +38,7 @@ export default function AppTopBar() {
 				<Box sx={{ flexGrow: 1, display: 'flex', justifyContent: ' end' }}>
 					{locationIsSongs &&
 						<OutlinedInput
+							value={search}
 							size="small"
 							margin="dense"
 							color="info"

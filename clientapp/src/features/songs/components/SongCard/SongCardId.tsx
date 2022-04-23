@@ -3,7 +3,7 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 
 
-import { Song } from '../song';
+import { Song } from '@/features/songs';
 
 import { red } from '@mui/material/colors';
 

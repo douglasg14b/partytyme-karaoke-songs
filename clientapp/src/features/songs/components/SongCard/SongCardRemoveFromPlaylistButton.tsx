@@ -2,7 +2,7 @@ import IconButton from '@mui/material/IconButton';
 
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-import { Song } from '../song';
+import { Song } from '@/features/songs';
 
 
 import { useRecoilValue } from 'recoil';
