@@ -18,16 +18,18 @@ interface Props {
 }
 
 export function CreatePlaylistDialog({ isOpen, onClose }: Props) {
-	const [name, setName] = useState('');
 	const [error, setError] = useState<string | boolean>('');
 
 	const {
 		playlists,
+		existingPlaylist,
+		name,
 		isDefault,
 		defaultSwitchDisabled,
 		setPlaylists,
+		setName,
 		handleDefaultChange,
-	} = usePlaylistForm('');
+	} = usePlaylistForm();
 
 	const handleClose = () => {
 		onClose();

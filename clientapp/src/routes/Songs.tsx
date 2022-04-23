@@ -21,12 +21,10 @@ interface ArtistsSearchProps {
 	onChange: (value: string) => void
 }
 
-function ArtistsSearch({ onChange }: ArtistsSearchProps) {
+function ArtistsSearch({ value, onChange }: ArtistsSearchProps) {
 	const artistsArray = ['', ...Array.from(artists.keys())];
-	const [selection, setSelection] = useState('');
 
 	const handleChange = (event: any, value: any) => {
-		setSelection(value as string);
 		onChange(value)
 	}
 
@@ -45,7 +43,7 @@ function ArtistsSearch({ onChange }: ArtistsSearchProps) {
 
 	return (
 		<Autocomplete
-			value={selection}
+			value={value}
 			onChange={handleChange}
 			size="small"
 			blurOnSelect
@@ -72,7 +70,7 @@ export default function Songs() {
 					Showing {visibleSongs}/{totalSongs} songs
 				</Grid>
 				<Grid item sx={{ mx: 6, px: 2, my: 2 }}>
-					<ArtistsSearch onChange={setSelectedArtist} />
+					<ArtistsSearch value={selectedArtist} onChange={setSelectedArtist} />
 				</Grid>
 				<Divider/>
 				<Grid item sx={{flex: 1}}>

@@ -6,7 +6,8 @@ type FieldRuleCallback = (val: string) => string | boolean
 type UseFormFieldReturn = [
 	string,
 	string | boolean,
-	(event: React.ChangeEvent<HTMLInputElement>) => void
+	(event: React.ChangeEvent<HTMLInputElement>) => void,
+	(value: string) => void
 ]
 
 export function useFormField(initialValue: string, rules: FieldRuleCallback[]): UseFormFieldReturn {
@@ -30,7 +31,7 @@ export function useFormField(initialValue: string, rules: FieldRuleCallback[]): 
 
 		// true means no error, so set to blank
 		setError(effectError === true ? '' : effectError);
-	}, [value, didMount, rules])
+	}, [value])
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(event.target.value);
@@ -39,6 +40,7 @@ export function useFormField(initialValue: string, rules: FieldRuleCallback[]): 
 	return [
 		value,
 		error,
-		handleChange
+		handleChange,
+		setValue
 	]
 }

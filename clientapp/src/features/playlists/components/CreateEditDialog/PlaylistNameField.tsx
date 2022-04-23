@@ -24,7 +24,13 @@ export function PlaylistNameField({ playlist, value, onError, onChange }: Props)
 		}
 	];
 
-	const [fieldValue, error, handleNameChange] = useFormField(value, nameFieldRules)
+	const [fieldValue, error, handleNameChange, setValue] = useFormField(value, nameFieldRules)
+
+	useEffect(() => {
+		if(playlist) {
+			setValue(playlist.name)
+		}	
+	}, [playlist, setValue])
 
 	useEffect(() => {
 		onChange(fieldValue);

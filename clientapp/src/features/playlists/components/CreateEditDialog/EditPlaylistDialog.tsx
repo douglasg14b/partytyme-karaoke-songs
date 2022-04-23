@@ -1,73 +1,66 @@
-import * as React from 'react';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { useRecoilState } from 'recoil';
+
 import { Playlist } from '@/features/playlists/models';
-import { atomPlaylists } from '@/features/playlists/recoil';
-import { useEffect, useState } from 'react';
-import { uuidv4 } from '@/_utility';
+import { useState } from 'react';
+import { removeItemAtIndex, replaceItemAtIndex, uuidv4 } from '@/_utility';
+import { PlaylistNameField } from './PlaylistNameField';
+import { usePlaylistForm } from './usePlaylistForm';
 
 interface Props {
-	playlistName: string
+	playlistId: string
 	isOpen: boolean,
 	onClose: () => void
 }
 
-export default function EditPlaylistDialog({ playlistName, isOpen, onClose }: Props) {
-	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(atomPlaylists);
-	const [name, setName] = useState(playlistName)
-	const [errorMessage, setErrorMessage] = useState('')
+export function EditPlaylistDialog({ playlistId, isOpen, onClose }: Props) {
+	const [error, setError] = useState<string | boolean>('');
 
-	const [isDefault, setIsDefault] = useState(true)
-	const [defaultSwitchDisabled, setDefaultSwitchDisabled] = useState(false)
+	const {
+		playlists,
+		existingPlaylist,
+		name,
+		isDefault,
+		defaultSwitchDisabled,
+		setPlaylists,
+		setName,
+		handleDefaultChange,
+	} = usePlaylistForm(playlistId);
 
-	const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setName(event.target.value)
+	if(!existingPlaylist) {
+		throw new Error('Cannot edit playlist that does not exist')
 	}
-
-	const onDefaultChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setIsDefault(event.target.checked);
-	};
 
 	const handleClose = () => {
 		onClose();
 	};
 
-	useEffect(() => {
+	const handleDelete = () => {
+		const index = playlists.findIndex((x) => x.id === playlistId)
+		const newPlaylists = removeItemAtIndex(playlists, index);
 
-		// This is quite an annoying way to do form validation
-		// There has  got to be a better way, that more engrained and declarative?
-		if (playlists.some((x) => x.name === name)) {
-			setErrorMessage("Playlist name already exists");
-		} else {
-			setErrorMessage("");
-		}
-	}, [name]);
-
-	useEffect(() => {
-		if (playlists.some((x) => x.default)) {
-			setIsDefault(false);
-			setDefaultSwitchDisabled(true);
-		}
-	}, [isOpen, playlists])
+		setPlaylists(newPlaylists)
+		onClose();
+	}
 
 	const handleSave = () => {
-		const newPlaylist: Playlist = {
-			id: uuidv4(),
+		const replacedPlaylist: Playlist = {
+			id: existingPlaylist.id,
 			name: name,
 			default: isDefault,
-			deleted: false,
-			songs: []
+			deleted: existingPlaylist.deleted,
+			songs: existingPlaylist.songs
 		}
 
-		setPlaylists([...playlists, newPlaylist])
+		const index = playlists.findIndex((x) => x.id === playlistId)
+		const newPlaylists = replaceItemAtIndex(playlists, index, replacedPlaylist);
+
+		setPlaylists(newPlaylists)
 		onClose();
 	};
 
@@ -75,24 +68,16 @@ export default function EditPlaylistDialog({ playlistName, isOpen, onClose }: Pr
 		<Dialog open={isOpen} onClose={handleClose} maxWidth='md' fullWidth>
 			<DialogTitle sx={{ textAlign: 'center', pb: 1 }}>Create Playlist</DialogTitle>
 			<DialogContent sx={{ pt: 0, pb: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-				<TextField
-					error={!!errorMessage}
-					helperText={errorMessage}
-					size='small'
-					autoFocus
-					margin="dense"
-					label="List Name"
-					type="text"
-					variant="standard"
-					onChange={onNameChange}
-				/>
+				<PlaylistNameField playlist={existingPlaylist} value={name} onError={setError} onChange={setName}/>
 				<FormControlLabel control={
-					<Switch checked={isDefault} onChange={onDefaultChange} color="warning" disabled={defaultSwitchDisabled} />
+					<Switch checked={isDefault} onChange={handleDefaultChange} color="warning" disabled={defaultSwitchDisabled} />
 				} label="Default" />
 			</DialogContent>
 			<DialogActions sx={{ py: 1 }}>
-				<Button onClick={handleClose}>Cancel</Button>
-				<Button onClick={handleSave} disabled={!!errorMessage && name.length > 1}>Create</Button>
+				<Button color='error' disabled={isDefault} onClick={handleDelete}>Delete</Button>
+				<div style={{flex: 1}}></div>
+				<Button color="inherit" onClick={handleClose}>Cancel</Button>
+				<Button onClick={handleSave} disabled={!!error || !name.length}>Save</Button>
 			</DialogActions>
 		</Dialog>
 	);
