@@ -14,6 +14,12 @@ import { theme } from './theme';
 import { ThemeProvider } from '@mui/material';
 import Home from './routes/Home';
 
+import { appInfoProvider } from '@/features/app'
+
+if(appInfoProvider.previousVersion < appInfoProvider.currentVersion) {
+	// do nothing,
+}
+
 const container = document.getElementById('root')!;
 
 const root = createRoot(container);
