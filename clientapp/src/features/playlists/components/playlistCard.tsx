@@ -11,7 +11,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Playlist } from '@/features/playlists/models';
 
 
-import { SongCard } from '@/features/songs/components/SongCard';
+import { PlaylistSongCard } from '@/features/songs/components/SongCard';
 import { usePlaylistArtists, usePlaylistSongs } from '@/features/playlists/hooks';
 import { useEffect, useState } from 'react';
 import { EditPlaylistDialog } from './CreateEditDialog';
@@ -55,7 +55,7 @@ export function PlaylistCard({ playlist }: Props) {
 						<Grid item xs={12}>
 							<Stack spacing={2} sx={{ width: '100%', flexWrap: 'nowrap' }}>
 								{songs.map((song) => (
-									<SongCard song={song} key={song.trackId} />
+									<PlaylistSongCard playlist={playlist} song={song} key={song.trackId} />
 								))}
 							</Stack>
 						</Grid>
