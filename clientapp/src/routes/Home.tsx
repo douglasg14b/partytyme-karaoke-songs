@@ -15,7 +15,7 @@ export default function Home() {
 		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
 			<Typography variant="body2" sx={{ pt: 3, flexBasis: '15%' }}>
 				<div>
-					Created with ❤️ by <a href="https://github.com/douglasg14b" target="_blank" >Douglas Gaskell</a>
+					Made with ❤️ by <a href="https://github.com/douglasg14b" target="_blank" >Douglas Gaskell</a>
 				</div>
 				<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mt: 1 }}>
 					<Button
