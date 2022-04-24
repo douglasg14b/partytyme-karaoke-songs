@@ -1,6 +1,5 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://douglasg14b.github.io/partytyme-karaoke-songs/#/songs
 
 ## Available Scripts
 

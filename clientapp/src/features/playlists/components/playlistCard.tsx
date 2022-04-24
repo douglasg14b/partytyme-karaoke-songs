@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
@@ -5,8 +6,13 @@ import Card from '@mui/material/Card';
 import IconButton from '@mui/material/IconButton';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import Slide from '@mui/material/Slide';
 
 import EditIcon from '@mui/icons-material/Edit';
+
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+import FlipMove from 'react-flip-move';
 
 import { Playlist } from '@/features/playlists/models';
 
@@ -54,9 +60,12 @@ export function PlaylistCard({ playlist }: Props) {
 
 						<Grid item xs={12}>
 							<Stack spacing={2} sx={{ width: '100%', flexWrap: 'nowrap' }}>
-								{songs.map((song) => (
-									<PlaylistSongCard playlist={playlist} song={song} key={song.trackId} />
-								))}
+								<FlipMove>
+									{songs.map((song) => (
+										<PlaylistSongCard playlist={playlist} song={song} key={song.trackId} />
+									))}
+								</FlipMove>
+
 							</Stack>
 						</Grid>
 					</Grid>
