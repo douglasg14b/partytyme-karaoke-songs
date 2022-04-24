@@ -23,8 +23,8 @@ export const PlaylistSongCard = forwardRef<HTMLDivElement, Props>(({ playlist, s
 	const isInPlaylist = useIsSongInPlaylist(song.trackId)
 
 	return (
-		<Box ref={ref}>
-			<Card  elevation={3} className={isInPlaylist ? styles['is-in-playlist'] : ''} style={style}>
+		<Box ref={ref} style={style}>
+			<Card elevation={3} className={isInPlaylist ? styles['is-in-playlist'] : ''}>
 				<CardContent sx={{ py: 2, pb: 0, position: 'relative' }} className={styles['pad-bottom']}>
 					<SongCardActionButtons song={song} isInPlaylist={isInPlaylist} />
 					<Grid container sx={{ flexWrap: 'nowrap' }}>

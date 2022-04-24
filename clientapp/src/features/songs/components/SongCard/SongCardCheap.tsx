@@ -41,7 +41,7 @@ export const SongCardCheap = React.memo(function SongCardCheap({ song, style }: 
 									</Typography>
 								</Grid>
 								<Grid item flexGrow={1}></Grid>
-								<Grid item sx={{mb: 1, mr: 0}}>
+								<Grid item sx={{mb: 1, mr: -0.25}}>
 									<Typography variant="caption" color={red[700]}>
 										<code>{song.trackId}</code>
 									</Typography>

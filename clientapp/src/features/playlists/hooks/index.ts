@@ -6,3 +6,4 @@ export * from './usePlaylistArtists';
 export * from './usePlaylistSongIndex';
 export * from './usePlaylistSongs';
 export * from './useRemoveSongFromDefaultPlaylist';
+export * from './useRemoveSongFromPlaylist';

@@ -14,6 +14,7 @@ import SongCardAddToPlaylistButton from './SongCardAddToPlaylistButton';
 import SongCardRemoveFromPlaylistButton from './SongCardRemoveFromPlaylistButton';
 import { SongCardBody } from './SongCardBody';
 import React from 'react';
+import { Playlist } from '@/features/playlists/models';
 
 type Props = {
 	song: Song,

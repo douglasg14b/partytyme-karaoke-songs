@@ -6,15 +6,16 @@ import { Song } from '@/features/songs';
 
 
 import { useRecoilValue } from 'recoil';
-import { useRemoveSongFromDefaultPlaylist } from '@/features/playlists/hooks';
+import { useRemoveSongFromPlaylist } from '@/features/playlists/hooks';
 import { withPlaylistCount } from '@/features/playlists/recoil';
+import { Playlist } from '@/features/playlists/models';
 
 type Props = {
 	song: Song
 }
 
 export default function SongCardRemoveFromPlaylistButton({ song }: Props) {
-	const removeSong = useRemoveSongFromDefaultPlaylist();
+	const removeSong = useRemoveSongFromPlaylist();
 	const playlistCount = useRecoilValue(withPlaylistCount);
 
 	const handleRemove = () => {
@@ -22,10 +23,10 @@ export default function SongCardRemoveFromPlaylistButton({ song }: Props) {
 	}
 
 	return (
-		<IconButton 
-			color='error' 
-			disabled={playlistCount === 0} 
-			onClick={handleRemove} 
+		<IconButton
+			color='error'
+			disabled={playlistCount === 0}
+			onClick={handleRemove}
 			sx={{ position: 'absolute', top: '-4px', right: '-4px' }}
 		>
 			<DeleteOutlineIcon fontSize='small' />

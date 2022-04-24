@@ -60,7 +60,7 @@ export function PlaylistCard({ playlist }: Props) {
 
 						<Grid item xs={12}>
 							<Stack spacing={2} sx={{ width: '100%', flexWrap: 'nowrap' }}>
-								<FlipMove>
+								<FlipMove typeName={null}>
 									{songs.map((song) => (
 										<PlaylistSongCard playlist={playlist} song={song} key={song.trackId} />
 									))}
