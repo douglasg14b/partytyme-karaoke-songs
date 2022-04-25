@@ -13,7 +13,7 @@ export default function Home() {
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
-			<Typography variant="body2" sx={{ pt: 3, flexBasis: '15%' }}>
+			<Typography component="div" variant="body2" sx={{ pt: 3, flexBasis: '15%' }}>
 				<div>
 					Made with ❤️ by <a href="https://github.com/douglasg14b" target="_blank" >Douglas Gaskell</a>
 				</div>
@@ -38,7 +38,9 @@ export default function Home() {
 					<li>Playlist Sharing</li>
 					<li>Playlist Colors</li>
 					<li>Playlist Copy All Codes</li>
-					<li>Favorites</li>
+					<li>Undo playlist & song delete</li>
+					<li>Toasts</li>
+					<li>Saved songs search filter</li>
 					<li>Times Sung</li>
 				</ul>
 			</Grid>

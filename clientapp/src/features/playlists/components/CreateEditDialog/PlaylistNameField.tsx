@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import { atomPlaylists } from "@/features/playlists/recoil";
 import { Playlist } from "@/features/playlists/models";
 import { useFormField } from "@/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import TextField from '@mui/material/TextField';
 
@@ -14,10 +14,12 @@ interface Props  {
 }
 
 export function PlaylistNameField({ playlist, value, onError, onChange }: Props) {
+	const maxLength = 15;
 	const playlists = useRecoilValue(atomPlaylists);
 
 	const nameFieldRules = [
 		(val: string) => !!val.length || 'Cannot be empty',
+		(val: string) => val.length <= maxLength || '15 Character Max',
 		(val: string) => {
 			if(val.toLowerCase() === playlist?.name?.toLowerCase()) return true;
 			return !playlists.some((x) => x.name.toLowerCase() === val.toLowerCase()) || 'Playlist name already exists'
@@ -25,6 +27,7 @@ export function PlaylistNameField({ playlist, value, onError, onChange }: Props)
 	];
 
 	const [fieldValue, error, handleNameChange, setValue] = useFormField(value, nameFieldRules)
+	const [helperText, setHelperText] = useState('');
 
 	useEffect(() => {
 		if(playlist) {
@@ -43,7 +46,11 @@ export function PlaylistNameField({ playlist, value, onError, onChange }: Props)
 	return (
 		<TextField
 			error={!!error}
-			helperText={error}
+			inputProps={{
+				maxLength: maxLength,
+				autoComplete: 'none'
+			}}
+			helperText={error || `${fieldValue.length}/${maxLength}`}
 			size='small'
 			autoFocus
 			margin="dense"

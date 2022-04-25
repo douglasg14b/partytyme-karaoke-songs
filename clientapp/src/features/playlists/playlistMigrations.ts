@@ -7,6 +7,9 @@ const migrations: Record<string, (items: any[]) => Playlist[]> = {
 		const output: Playlist[] = [];
 
 		items.forEach((item) => {
+			if(item.default && item.name === 'Default') {
+				item.name = '⭐ Favorites'
+			}
 			output.push({
 				id: item.id || uuidv4(),
 				name: item.name,

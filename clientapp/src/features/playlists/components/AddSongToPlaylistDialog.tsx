@@ -36,7 +36,7 @@ export function AddSongToPlaylistDialog({ trackId, isOpen, onClose }: Props) {
 			<Divider/>
 			<DialogContent sx={{ pt: 0, pb: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
 				{playlists.map((playlist) =>
-					<Card elevation={3} sx={{py: 1, px: 2, mt: 2}} onClick={() => handleAddToPlaylist(playlist)}>
+					<Card key={playlist.id} elevation={3} sx={{py: 1, px: 2, mt: 2}} onClick={() => handleAddToPlaylist(playlist)}>
 						<PlaylistCardHeader playlist={playlist} hideEdit />
 
 					</Card>

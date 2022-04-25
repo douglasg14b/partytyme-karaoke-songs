@@ -16,6 +16,10 @@ class AppInfoProvider {
 		return this._currentInfo.version
 	}
 
+	get currentInfo() {
+		return this._currentInfo;
+	}
+
 	constructor() {
 		const infoJson = localStorage.getItem(APP_INFO_KEY)
 

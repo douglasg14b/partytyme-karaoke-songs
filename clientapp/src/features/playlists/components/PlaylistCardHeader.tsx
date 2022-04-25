@@ -32,7 +32,7 @@ export function PlaylistCardHeader({ playlist, hideEdit, onEdit, onClick }: Prop
 
 	return (
 		<Grid item xs={12} sx={{ display: 'flex' }} onClick={onClick} >
-			<Grid sx={{ flex: 1 }}>
+			<Grid sx={{ flex: '1 0 auto' }}>
 				<Typography variant="h6" color="text.primary">
 					{playlist.name}
 				</Typography>
@@ -42,7 +42,7 @@ export function PlaylistCardHeader({ playlist, hideEdit, onEdit, onClick }: Prop
 					{titleDetails}
 				</Typography>
 			</Grid>
-			<Grid sx={{ flex: 1, display: 'flex', justifyContent: 'end' }}>
+			<Grid sx={{ flex: '1 1 auto', display: 'flex', justifyContent: 'end' }}>
 				{!hideEdit &&
 					<IconButton color='info' sx={{ mt: -1 }} onClick={onEdit}>
 						<EditIcon />

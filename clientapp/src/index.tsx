@@ -16,6 +16,12 @@ import Home from './routes/Home';
 
 import { appInfoProvider } from '@/features/app'
 
+import splitbee from '@splitbee/web';
+
+splitbee.init({
+	// token: 'EPC8IL1LK33J', 
+});
+
 if (appInfoProvider.previousVersion < appInfoProvider.currentVersion) {
 	// do nothing,
 }
