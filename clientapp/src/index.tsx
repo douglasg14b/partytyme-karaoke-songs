@@ -20,7 +20,7 @@ import splitbee from '@splitbee/web';
 import About from './routes/About';
 
 splitbee.init({
-	// token: 'EPC8IL1LK33J', 
+	token: 'EPC8IL1LK33J', 
 });
 
 if (appInfoProvider.previousVersion < appInfoProvider.currentVersion) {
