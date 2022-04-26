@@ -40,10 +40,10 @@ const rows = [
 export default function About() {
 
 	return (
-		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
+		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1, mx: 5 }}>
 			<Attribution />
 
-			<Grid item sx={{ mt: 3, width: '85vw' }}>
+			<Grid item sx={{ mt: 3, width: '100%' }}>
 				<Paper elevation={3} sx={{ p: 3, width: '100%' }}>
 					<Typography component="div" variant="body2">
 						Created to learn React and because 477 pages of dead trees is an excessively annoying way to find songs for Karaoke
@@ -53,7 +53,7 @@ export default function About() {
 			</Grid>
 
 
-			<Grid item sx={{ mt: 6, mb: 5, width: '85vw' }}>
+			<Grid item sx={{ mt: 6, mb: 5, width: '100%' }}>
 				<TableContainer component={TableRoot} sx={{ maxHeight: '50vh' }}>
 					<Table stickyHeader size="small" aria-label="a dense table">
 						<TableHead>
