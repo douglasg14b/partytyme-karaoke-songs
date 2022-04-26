@@ -6,9 +6,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import useEventBus from '@jeyz/event-bus'
+
 import { Playlist } from '@/features/playlists/models';
 import { useState } from 'react';
-import { removeItemAtIndex, replaceItemAtIndex, uuidv4 } from '@/_utility';
+import { removeItemAtIndex, replaceItemAtIndex, ToastEventBusMessages, uuidv4 } from '@/_utility';
 import { PlaylistNameField } from './PlaylistNameField';
 import { usePlaylistForm } from './usePlaylistForm';
 
@@ -19,6 +21,7 @@ interface Props {
 }
 
 export function EditPlaylistDialog({ playlistId, isOpen, onClose }: Props) {
+	const eventBus = useEventBus<ToastEventBusMessages>();
 	const [error, setError] = useState<string | boolean>('');
 
 	const {
@@ -41,10 +44,22 @@ export function EditPlaylistDialog({ playlistId, isOpen, onClose }: Props) {
 	};
 
 	const handleDelete = () => {
-		const index = playlists.findIndex((x) => x.id === playlistId)
+		
+		const index = playlists.findIndex((x) => x.id === playlistId);
+		const deletedPlaylist = playlists[index];
+
 		const newPlaylists = removeItemAtIndex(playlists, index);
 
 		setPlaylists(newPlaylists)
+
+		eventBus.publish({
+            topic: 'PlaylistDeleted',
+            payload: {
+				playlist: deletedPlaylist,
+				index: index
+			}
+        });
+
 		onClose();
 	}
 

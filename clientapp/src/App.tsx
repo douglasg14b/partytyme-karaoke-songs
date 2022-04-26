@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import AppTopBar from './layout/appTopBar';
 import { RecoilRoot } from 'recoil';
-import { Dialogs } from './components';
+import { Dialogs, Toasts } from './components';
 import { SplitbeeAnalytics } from './features/app';
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
 				</Grid>
 			</Container>
 			<Dialogs/>
+			<Toasts/>
 		</RecoilRoot>
 	);
 }
