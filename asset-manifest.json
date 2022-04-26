@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/partytyme-karaoke-songs/static/css/main.abe1ffb0.css",
-    "main.js": "/partytyme-karaoke-songs/static/js/main.03e514c7.js",
+    "main.css": "/partytyme-karaoke-songs/static/css/main.358fedec.css",
+    "main.js": "/partytyme-karaoke-songs/static/js/main.976c4376.js",
     "static/js/787.bf3bce17.chunk.js": "/partytyme-karaoke-songs/static/js/787.bf3bce17.chunk.js",
+    "static/media/qr-code.png": "/partytyme-karaoke-songs/static/media/qr-code.5f78fb6351e97d317599.png",
     "index.html": "/partytyme-karaoke-songs/index.html",
-    "main.abe1ffb0.css.map": "/partytyme-karaoke-songs/static/css/main.abe1ffb0.css.map",
-    "main.03e514c7.js.map": "/partytyme-karaoke-songs/static/js/main.03e514c7.js.map",
+    "main.358fedec.css.map": "/partytyme-karaoke-songs/static/css/main.358fedec.css.map",
+    "main.976c4376.js.map": "/partytyme-karaoke-songs/static/js/main.976c4376.js.map",
     "787.bf3bce17.chunk.js.map": "/partytyme-karaoke-songs/static/js/787.bf3bce17.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.abe1ffb0.css",
-    "static/js/main.03e514c7.js"
+    "static/css/main.358fedec.css",
+    "static/js/main.976c4376.js"
   ]
 }
