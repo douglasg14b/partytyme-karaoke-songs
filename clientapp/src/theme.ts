@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import { green, grey } from "@mui/material/colors";
+import { green, grey, orange } from "@mui/material/colors";
 
 const theme = createTheme({
     spacing: 4,
@@ -11,6 +11,10 @@ const theme = createTheme({
 		green400: {
             main: green[400],
             contrastText: '#fff',
+		},
+		orange800: {
+            main: orange[800],
+            contrastText: '#000',
 		},
 		grey600: {
             main: grey[600],
@@ -39,12 +43,14 @@ const theme = createTheme({
 declare module '@mui/material/styles' {
     interface Palette {
         green400: Palette['primary'];
+        orange800: Palette['primary'];
         grey600: Palette['primary'];
     }
 
     // allow configuration using `createTheme`
     interface PaletteOptions {
         green400?: PaletteOptions['primary'];
+        orange800?: PaletteOptions['primary'];
         grey600?: PaletteOptions['primary'];
     }
 }
@@ -52,6 +58,7 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/IconButton' {
     interface IconButtonPropsColorOverrides {
         green400: true;
+        orange800: true;
         grey600: true;
     }
 }
@@ -66,6 +73,7 @@ declare module '@mui/material/Fab' {
 declare module '@mui/material/SvgIcon' {
     interface SvgIconPropsColorOverrides {
         green400: true;
+        orange800: true;
         grey600: true;
     }
 }

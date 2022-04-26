@@ -17,6 +17,7 @@ import Home from './routes/Home';
 import { appInfoProvider } from '@/features/app'
 
 import splitbee from '@splitbee/web';
+import About from './routes/About';
 
 splitbee.init({
 	// token: 'EPC8IL1LK33J', 
@@ -41,6 +42,7 @@ root.render(
 							<Route path='/home' element={<Home />} />
 							<Route path='/songs' element={<Songs />} />
 							<Route path='/playlists' element={<Playlists />} />
+							<Route path='/about' element={<About />} />
 							<Route path="*" element={<Navigate to="/home" replace />} />
 						</Route>
 						<Route path="*" element={<Navigate to="/home" replace />} />

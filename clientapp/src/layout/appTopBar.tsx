@@ -20,6 +20,7 @@ const titleMappings: Record<string, string> = {
 	'/home': 'Karaoke Songs App',
 	'/songs': 'Songs',
 	'/playlists': 'Playlists',
+	'/about': 'About',
 }
 
 export default function AppTopBar() {
