@@ -14,7 +14,7 @@ import CheckIcon from '@mui/icons-material/Check';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import Attribution from "@/components/Attribution";
 
-const TableRoot = function(props: any) {
+const TableRoot = function (props: any) {
 	return (
 		<Paper  {...props} elevation={4} />
 	)
@@ -22,18 +22,20 @@ const TableRoot = function(props: any) {
 
 
 const rows = [
-	{ name: 'Link Share QR Code', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Multiple Playlists', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Edit Playlists', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Undo Playlist Delete', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Infinite Scroll', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Artist Filter', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Song Id Copy', status: <CheckIcon fontSize="small" color="green400"/> },
-	{ name: 'Playlist Colors', status: <QuestionMarkIcon fontSize="small" color="orange800"/> },
-	{ name: 'Playlist Copy Codes', status: <QuestionMarkIcon fontSize="small" color="orange800"/> },
-	{ name: 'Playlist Sharing', status: <QuestionMarkIcon fontSize="small" color="orange800"/> },
-	{ name: 'Times Sung', status: <QuestionMarkIcon fontSize="small" color="orange800"/> },
-  ];
+	{ name: 'Link Share QR Code', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Multiple Playlists', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Edit Playlists', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Rearrange Songs', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Undo Playlist Delete', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Infinite Scroll', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Artist Filter', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Song Id Copy', status: <CheckIcon fontSize="small" color="green400" /> },
+	{ name: 'Single Song, Many Playlists', status: <QuestionMarkIcon fontSize="small" color="orange800" /> },
+	{ name: 'Playlist Colors', status: <QuestionMarkIcon fontSize="small" color="orange800" /> },
+	{ name: 'Playlist Copy Codes', status: <QuestionMarkIcon fontSize="small" color="orange800" /> },
+	{ name: 'Playlist Sharing', status: <QuestionMarkIcon fontSize="small" color="orange800" /> },
+	{ name: 'Times Sung', status: <QuestionMarkIcon fontSize="small" color="orange800" /> },
+];
 
 export default function About() {
 
@@ -41,8 +43,8 @@ export default function About() {
 		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
 			<Attribution />
 
-			<Grid item sx={{ mt: 3, width: '85vw'}}>
-				<Paper elevation={3} sx={{p: 3, width: '100%'}}>
+			<Grid item sx={{ mt: 3, width: '85vw' }}>
+				<Paper elevation={3} sx={{ p: 3, width: '100%' }}>
 					<Typography component="div" variant="body2">
 						Created to learn React and because 477 pages of dead trees is an excessively annoying way to find songs for Karaoke
 					</Typography>
@@ -50,10 +52,10 @@ export default function About() {
 
 			</Grid>
 
-			
-			<Grid item sx={{ mt: 6, width: '85vw'}}>
-				<TableContainer component={TableRoot}>
-					<Table size="small" aria-label="a dense table">
+
+			<Grid item sx={{ mt: 6, mb: 5, width: '85vw' }}>
+				<TableContainer component={TableRoot} sx={{ maxHeight: '50vh' }}>
+					<Table stickyHeader size="small" aria-label="a dense table">
 						<TableHead>
 							<TableRow>
 								<TableCell>Feature</TableCell>
