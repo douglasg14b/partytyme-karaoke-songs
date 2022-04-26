@@ -3,10 +3,10 @@ html {
   overflow: hidden;
 }
 
-body {
+body { 
   height: 100%;
   width: 100%;
-  position: fixed;
+  position: fixed; /* Fixes issues with mobile body having a scrollbar because of the address bar height */
   overflow: hidden;
 
   margin: 0;

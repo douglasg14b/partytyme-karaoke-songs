@@ -12,6 +12,8 @@ import { uuidv4 } from '@/_utility';
 import { PlaylistNameField } from './PlaylistNameField';
 import { usePlaylistForm } from './usePlaylistForm';
 
+import splitbee from '@splitbee/web';
+
 interface Props {
 	isOpen: boolean,
 	onClose: () => void
@@ -45,6 +47,11 @@ export function CreatePlaylistDialog({ isOpen, onClose }: Props) {
 		}
 
 		setPlaylists([...playlists, newPlaylist])
+
+		splitbee.track("Playlist Created", {
+			name: name
+		})
+
 		onClose();
 	};
 
@@ -52,7 +59,7 @@ export function CreatePlaylistDialog({ isOpen, onClose }: Props) {
 		<Dialog open={isOpen} onClose={handleClose} maxWidth='md' fullWidth>
 			<DialogTitle sx={{ textAlign: 'center', pb: 1 }}>Create Playlist</DialogTitle>
 			<DialogContent sx={{ pt: 0, pb: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-				<PlaylistNameField value={name} onError={setError} onChange={setName}/>
+				<PlaylistNameField value={name} onError={setError} onChange={setName} />
 				<FormControlLabel control={
 					<Switch checked={isDefault} onChange={handleDefaultChange} color="warning" disabled={defaultSwitchDisabled} />
 				} label="Default" />
