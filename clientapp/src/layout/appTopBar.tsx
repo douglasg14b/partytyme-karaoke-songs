@@ -16,6 +16,13 @@ import { styled } from '@mui/material/styles';
 import { useRecoilState } from 'recoil';
 import { songSearchState } from '../features/songs/songState';
 
+const titleMappings: Record<string, string> = {
+	'/home': 'Karaoke Songs App',
+	'/songs': 'Songs',
+	'/playlists': 'Playlists',
+	'/about': 'About',
+}
+
 export default function AppTopBar() {
 	const location = useLocation();
 
@@ -30,28 +37,30 @@ export default function AppTopBar() {
 	return (
 		<AppBar position="static">
 			<Toolbar>
-				<Box>
+				<Box sx={{ display: 'flex', flexGrow: 1, flexShrink: 1, justifyContent: 'center' }}>
 					<Typography variant="h6" gutterBottom component="div">
-						{location.pathname}
+						{titleMappings[location.pathname] || location.pathname}
 					</Typography>
 				</Box>
-				<Box sx={{ flexGrow: 1, display: 'flex', justifyContent:' end' }}>
-					{locationIsSongs && 
-						<OutlinedInput
-						id="outlined-basic"
+				{locationIsSongs && <Box sx={{ flex: 3, display: 'flex', justifyContent: 'end' }}>
+					<OutlinedInput
+						value={search}
 						size="small"
 						margin="dense"
 						color="info"
-						sx={{background: 'aliceblue', color: 'black'}}
+						sx={{ background: 'aliceblue', color: 'black' }}
 						onChange={onChange}
+						inputProps={{
+							autoComplete: "none",
+						}}
 						endAdornment={
 							<InputAdornment position="end">
 								<SearchIcon />
 							</InputAdornment>
 						} />
-					}
-
 				</Box>
+				}
+
 			</Toolbar>
 		</AppBar>
 	);

@@ -6,9 +6,11 @@ import Stack from "@mui/material/Stack";
 import AddIcon from '@mui/icons-material/Add';
 
 import React, { useState } from "react";
-import { PlaylistCard, Playlist, playlistsState, CreatePlaylistDialog } from "@/features/playlists";
+import { PlaylistCard, CreatePlaylistDialog } from "@/features/playlists/components";
+import { Playlist } from "@/features/playlists/models";
 import { useRecoilState } from "recoil";
 import { SxProps } from "@mui/material/styles";
+import { atomPlaylists } from "@/features/playlists/recoil";
 
 const fabStyle = {
 	position: 'absolute',
@@ -20,7 +22,7 @@ const fabStyle = {
 
 export default function Playlists() {
 
-	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(playlistsState);
+	const [playlists, setPlaylists] = useRecoilState<Playlist[]>(atomPlaylists);
 	const [dialogOpen, setDialogOpen] = useState(false)
 
 	const handleDialogOpen = () => {
@@ -34,16 +36,16 @@ export default function Playlists() {
     return (
 		<React.Fragment>
 			<Grid container flexGrow="1" sx={{ m: 4, pb: 4, width: 'auto', justifyContent: 'center', position: 'relative'}}>
-				<Stack spacing={2} sx={{ width: '100%', flexWrap: 'nowrap' }}>
+				<Stack spacing={4} sx={{ width: '100%', flexWrap: 'nowrap' }}>
 					{playlists.map((playlist) => (
 						<PlaylistCard playlist={playlist} key={playlist.name} />
 					))}
 				</Stack>
 			</Grid>
-			<Fab color="green400" disabled sx={fabStyle as SxProps} aria-label="add" onClick={handleDialogOpen}>
+			<Fab color="green400" sx={fabStyle as SxProps} aria-label="add" onClick={handleDialogOpen}>
 				<AddIcon htmlColor="white" />
 			</Fab>
-			<CreatePlaylistDialog isOpen={dialogOpen} onClose={handleDialogClose}></CreatePlaylistDialog>
+			<CreatePlaylistDialog isOpen={dialogOpen} onClose={handleDialogClose} key={`${dialogOpen}`}></CreatePlaylistDialog>
 		</React.Fragment>
 
     );

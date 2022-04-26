@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper"
 
 import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import HomeIcon from '@mui/icons-material/Home';
 import BookIcon from '@mui/icons-material/Book';
 import React, { useEffect } from "react";
@@ -28,6 +29,7 @@ export default function BottomNav() {
             <BottomNavigationAction label="Home" icon={<HomeIcon />} value="/home" component={NavLink} to="/home" />
             <BottomNavigationAction label="Songs" icon={<MusicNoteIcon />} value="/songs" component={NavLink} to="/songs" />
             <BottomNavigationAction label="Lists" icon={<QueueMusicIcon />} value="/playlists" component={NavLink} to="/playlists" />
+            <BottomNavigationAction label="About" icon={<HelpOutlineIcon />} value="/about" component={NavLink} to="/about" />
           </BottomNavigation>
         </Paper>
 

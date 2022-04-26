@@ -9,16 +9,19 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import AppTopBar from './layout/appTopBar';
 import { RecoilRoot } from 'recoil';
+import { Dialogs, Toasts } from './components';
+import { SplitbeeAnalytics } from './features/app';
 
 function App() {
 	return (
 		<RecoilRoot>
+			<SplitbeeAnalytics/>
 			<Container disableGutters sx={{ height: '100%', display: 'flex' }}>
 				<Grid container direction="column" flexWrap="nowrap" sx={{ position: 'relative' }}>
 					<Grid item>
 						<AppTopBar />
 					</Grid>
-					<Grid item flexGrow="1" display='flex' direction="column" sx={{ overflowY: 'auto' }}>
+					<Grid item flexGrow="1" display='flex' sx={{ overflowY: 'auto', flexDirection: 'column' }}>
 						<Outlet />
 					</Grid>
 					<Grid item>
@@ -26,6 +29,8 @@ function App() {
 					</Grid>
 				</Grid>
 			</Container>
+			<Dialogs/>
+			<Toasts/>
 		</RecoilRoot>
 	);
 }

@@ -1,28 +1,22 @@
-import QRCode from "react-qr-code";
-import Divider from "@mui/material/Divider";
 import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+
+import Attribution from "@/components/Attribution";
+
 
 export default function Home() {
 
-    return (
-		<Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', flexGrow: 1}}>
+	return (
+		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexGrow: 1 }}>
+			<Attribution />
 
-			<QRCode value="https://douglasg14b.github.io/partytyme-karaoke-songs/#/songs"/>
-			<Grid item sx={{mt: 6}}>
-				Features to Add:
-				<ul>
-					<li>Add/Remove Playlists</li>
-					<li>Playlist Sharing</li>
-					<li>Playlist Sorting</li>
-					<li>Playlist Colors</li>
-					<li>Playlist Copy All Codes</li>
-					<li>Favorites</li>
-					<li>Times Sung</li>
-					<li>Improved Search</li>
-				</ul>
-			</Grid>
+			<Box sx={{ flex: 1 }} />
+
+			<Box sx={{ my: 2, mb: 8, mx: 4 }}>
+				<img src={require('@/assets/qr-code.png')} alt="qr code" style={{width: '80vw'}} />
+				{/* <QRCode level="L" value="https://douglasg14b.github.io/partytyme-karaoke-songs/#/songs" /> */}
+			</Box>
+
 		</Box>
 
-    );
+	);
 }
