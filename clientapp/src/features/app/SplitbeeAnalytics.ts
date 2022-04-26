@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import { atomPlaylists } from "../playlists/recoil"
 
 import splitbee from '@splitbee/web';
 import { appInfoProvider } from "./appInfoProvider";
 
+
+const useUsers = false;
+
 export function SplitbeeAnalytics() {
 	const [userData, setUserData] = useState({});
-	const playlists = useRecoilState(atomPlaylists)
+	const playlists = useRecoilValue(atomPlaylists)
 	const effectRunning = useRef(false);
 
 	useEffect(() => {
@@ -22,7 +25,11 @@ export function SplitbeeAnalytics() {
 			playlists: JSON.stringify(playlists)
 		};
 
-		if(JSON.stringify(newUserData) !== JSON.stringify(userData)) {
+		const totalSongs = playlists.reduce((num, value, index, arr) => {
+			 return num + value.songs.length 
+		}, 0)
+
+		if(useUsers && JSON.stringify(newUserData) !== JSON.stringify(userData) && totalSongs > 1) {
 		
 			setUserData(newUserData);
 
@@ -31,7 +38,7 @@ export function SplitbeeAnalytics() {
 				playlists: JSON.stringify(playlists)
 			})
 		}
-		
+
 		// Effectively prevent it from re-running for 500ms
 		setTimeout(() => {
 			effectRunning.current = false;
