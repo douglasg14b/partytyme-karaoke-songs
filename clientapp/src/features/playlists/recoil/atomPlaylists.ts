@@ -7,7 +7,7 @@ export const atomPlaylists = atom<Playlist[]>({
 	key: 'atomPlaylists', // unique ID (with respect to other atoms/selectors)
 	default: [{
 		id: uuidv4(),
-		name: 'Default',
+		name: '⭐ Favorites',
 		default: true,
 		deleted: false,
 		songs: []
