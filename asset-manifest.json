@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/partytyme-karaoke-songs/static/css/main.2bc76fbb.css",
-    "main.js": "/partytyme-karaoke-songs/static/js/main.13336909.js",
+    "main.js": "/partytyme-karaoke-songs/static/js/main.288c057d.js",
     "static/js/787.bf3bce17.chunk.js": "/partytyme-karaoke-songs/static/js/787.bf3bce17.chunk.js",
     "static/media/qr-code.png": "/partytyme-karaoke-songs/static/media/qr-code.5f78fb6351e97d317599.png",
     "index.html": "/partytyme-karaoke-songs/index.html",
     "main.2bc76fbb.css.map": "/partytyme-karaoke-songs/static/css/main.2bc76fbb.css.map",
-    "main.13336909.js.map": "/partytyme-karaoke-songs/static/js/main.13336909.js.map",
+    "main.288c057d.js.map": "/partytyme-karaoke-songs/static/js/main.288c057d.js.map",
     "787.bf3bce17.chunk.js.map": "/partytyme-karaoke-songs/static/js/787.bf3bce17.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2bc76fbb.css",
-    "static/js/main.13336909.js"
+    "static/js/main.288c057d.js"
   ]
 }
